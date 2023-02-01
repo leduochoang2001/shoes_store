@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 06:47 AM
+-- Generation Time: Feb 01, 2023 at 02:35 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -181,15 +181,15 @@ CREATE TABLE `shoe_order` (
   `orderID` int(11) NOT NULL,
   `customerID` int(11) DEFAULT NULL,
   `orderDate` date DEFAULT NULL,
-  `stat` int(11) DEFAULT NULL,
-  `totalMoney` int(11) DEFAULT NULL
+  `pay_method` int(11) DEFAULT NULL,
+  `totalMoney` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `shoe_order`
 --
 
-INSERT INTO `shoe_order` (`orderID`, `customerID`, `orderDate`, `stat`, `totalMoney`) VALUES
+INSERT INTO `shoe_order` (`orderID`, `customerID`, `orderDate`, `pay_method`, `totalMoney`) VALUES
 (1, 1, '2022-12-10', 1, NULL),
 (2, 2, '2022-12-11', 1, NULL),
 (3, 2, '2022-12-11', 1, NULL),
@@ -342,6 +342,18 @@ INSERT INTO `size` (`sizeID`, `sval`) VALUES
 (7, 42),
 (8, 43);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voucher`
+--
+
+CREATE TABLE `voucher` (
+  `voucherID` int(11) NOT NULL,
+  `value` varchar(200) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -408,6 +420,12 @@ ALTER TABLE `size`
   ADD PRIMARY KEY (`sizeID`);
 
 --
+-- Indexes for table `voucher`
+--
+ALTER TABLE `voucher`
+  ADD PRIMARY KEY (`voucherID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -452,6 +470,12 @@ ALTER TABLE `shoe_order`
 --
 ALTER TABLE `size`
   MODIFY `sizeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `voucher`
+--
+ALTER TABLE `voucher`
+  MODIFY `voucherID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
